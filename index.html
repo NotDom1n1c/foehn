@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Föhn — the wind over Switzerland</title>
+<meta name="description" content="The real forecast wind over the Swiss Alps as tens of thousands of light trails on three altitude layers, with rain, a föhn meter and 48 hours for any spot you click.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=7">
+</head>
+<body>
+<canvas id="gl"></canvas>
+<div class="cities" id="cities"></div>
+
+<header class="mark">
+  <h1>FÖHN</h1>
+  <p>the wind over Switzerland · next 48 h</p>
+  <p class="src" id="src">reading the forecast…</p>
+</header>
+
+<section class="meter" id="meter">
+  <p class="lbl">föhn index <small>Lugano − Zürich</small></p>
+  <div class="val"><b id="fVal">—</b><span>hPa</span></div>
+  <p class="state" id="fState"></p>
+  <canvas id="fChart"></canvas>
+</section>
+
+<aside class="spot" id="spot">
+  <p class="lbl" id="sName">Brugg</p>
+  <div class="now">
+    <div class="arrow" id="sArrow"><i></i></div>
+    <div><b id="sWind">—</b><span>km/h ground wind</span></div>
+  </div>
+  <dl id="sFacts"></dl>
+  <canvas id="sChart"></canvas>
+  <p class="hint2">click the land to move your spot</p>
+</aside>
+
+<div class="layers" id="layers">
+  <button data-l="0" class="on"><i></i>ground</button>
+  <button data-l="1" class="on"><i></i>1500 m</button>
+  <button data-l="2" class="on"><i></i>3000 m</button>
+  <button data-x="rain" class="on"><i></i>rain</button>
+  <button data-x="border" class="on"><i></i>border</button>
+</div>
+<div class="legend"><span>calm</span><i></i><span>storm</span></div>
+
+<nav class="time" id="time">
+  <button id="play" aria-pressed="false" title="play the next hours (space)">▶</button>
+  <div class="track" id="track"><div class="days" id="days"></div><input type="range" id="hour" min="0" max="47" step="0.01" value="0"><div class="nowmark" id="nowmark"></div></div>
+  <div class="clock"><b id="when">—</b><button id="now">NOW</button></div>
+</nav>
+
+<div class="boot" id="boot"><span id="bootT">reading the forecast</span></div>
+
+<script src="app.js?v=7"></script>
+</body>
+</html>
